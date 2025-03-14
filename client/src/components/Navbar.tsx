@@ -1,13 +1,17 @@
-import { BellIcon, CircleUserRound, SettingsIcon } from 'lucide-react';
+import { BellIcon, SettingsIcon } from 'lucide-react';
 import { Input } from './ui/input';
 import '../App.css';
 import { Button } from './ui/button';
+import { Link } from 'react-router';
+import { SignedIn, UserButton } from '@clerk/clerk-react';
 
 const Navbar = () => {
   return (
     <nav className="flex justify-between items-center py-2 px-4 my-4 border-b-2 sticky top-0 bg-zinc-950 h-16 z-99">
       <section className="flex gap-5 items-center">
-        <h1 className="nav-logo">C0D1NG</h1>
+        <Link to="/">
+          <h1 className="nav-logo">C0D1NG</h1>
+        </Link>
       </section>
       <section>
         <Input placeholder="Search" />
@@ -19,9 +23,11 @@ const Navbar = () => {
         <Button className="">
           <BellIcon />
         </Button>
-        <Button className="">
-          <CircleUserRound />
-        </Button>
+        <div className="">
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
       </section>
     </nav>
   );
