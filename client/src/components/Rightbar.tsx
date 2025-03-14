@@ -3,7 +3,7 @@ import PopularQuestions from './PopularQuestions';
 
 const Rightbar = () => {
   return (
-    <aside className="fixed h-screen flex flex-col gap-5 p-2">
+    <aside className="fixed h-screen flex flex-col gap-5 p-5">
       <PopularQuestions />
       <Collectives />
     </aside>

@@ -11,6 +11,7 @@ import Login from './routes/Login.tsx';
 import Register from './routes/Register.tsx';
 import { RouterProvider } from 'react-router';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { Toaster } from '@/components/ui/sonner';
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,7 @@ createRoot(document.getElementById('root')!).render(
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
+        <Toaster />
       </QueryClientProvider>
     </ClerkProvider>
   </StrictMode>

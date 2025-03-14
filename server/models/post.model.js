@@ -8,6 +8,10 @@ const postSchema = new Schema(
       ref: 'User',
       required: true,
     },
+    userImageUrl: {
+      type: String,
+      required: true,
+    },
     question: {
       type: String,
       required: true,
@@ -20,6 +24,7 @@ const postSchema = new Schema(
     },
     tag: {
       type: String,
+      default: 'general',
     },
     slug: {
       type: String,

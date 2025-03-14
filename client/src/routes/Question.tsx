@@ -1,5 +1,5 @@
 const Question = () => {
-  return <div className="">Question route</div>;
+  return <Question />;
 };
 
 export default Question;
