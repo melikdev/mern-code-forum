@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 const PopQuestion = () => {
   return (
-    <main className="p-4 max-w-86 bg-zinc-900 rounded-xl">
+    <main className="p-4 max-w-86 dark:bg-zinc-900 border-2 rounded-xl">
       {question.map((q) => {
         return (
           <Link

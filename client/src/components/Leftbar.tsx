@@ -1,20 +1,27 @@
 import { menuItems } from '@/lib/menuItems';
-import { HomeIcon } from 'lucide-react';
+import { Link, useParams } from 'react-router';
 
 const Leftbar = () => {
+  const params = useParams();
+
+  console.log(params.id);
+
   return (
     <aside className="fixed flex flex-col">
-      <ul className="flex flex-col gap-3 sm:ml-10 md:ml-2">
+      <ul className="flex flex-col gap-3 sm:ml-10 md:ml-2 ">
         {menuItems.map((menuItem) => (
-          <button
+          <Link
+            to={menuItem.href}
             key={menuItem.name}
-            className="h-10 rounded-md cursor-pointer"
+            className={`h-10 rounded-md cursor-pointer ${
+              params.id === menuItem.href ? 'bg-zinc-500 text-white' : ''
+            }`}
           >
             <li className="text-sm flex items-center lg:justify-start gap-3 p-2">
-              <HomeIcon />
+              {menuItem.icon}
               <span className="hidden md:block">{menuItem.name}</span>
             </li>
-          </button>
+          </Link>
         ))}
       </ul>
     </aside>

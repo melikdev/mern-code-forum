@@ -6,6 +6,7 @@ export const getPosts = async (req, res) => {
   const limit = parseInt(req.query.limit) || 5;
 
   const posts = await Post.find()
+    .populate('user', 'username')
     .limit(limit)
     .skip((page - 1) * limit);
 
@@ -16,7 +17,10 @@ export const getPosts = async (req, res) => {
 };
 
 export const getPost = async (req, res) => {
-  const post = await Post.findOne({ slug: req.params.slug });
+  const post = await Post.findOne({ slug: req.params.slug }).populate(
+    'user',
+    'username'
+  );
   res.status(200).json(post);
 };
 
@@ -52,6 +56,16 @@ export const createPost = async (req, res) => {
   const post = await newPost.save();
   res.status(200).json(post);
 };
+
+export const likePost = async (req, res) => {
+  const likedPost = await Post.findOneAndUpdate(
+    { _id: req.body.id },
+    { $inc: { likeCount: 1 } }
+  );
+
+  res.status(200).json(likedPost);
+};
+
 export const deletePost = async (req, res) => {
   const clerkUserId = req.auth.userId;
 
