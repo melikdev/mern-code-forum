@@ -89,10 +89,10 @@ const Comments = ({ postId }: { postId: string | undefined }) => {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-expect-error
                 desc: `${mutation.variables.desc} (Sending...)`,
-                createdAt: new Date().toString(),
+                createdAt: new Date(),
                 user: {
-                  imageUrl: JSON.stringify(user?.imageUrl),
-                  username: JSON.stringify(user?.username),
+                  imageUrl: user?.imageUrl,
+                  username: user?.username,
                 },
               }}
             />
