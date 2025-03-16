@@ -1,17 +1,15 @@
 import { format } from 'timeago.js';
 
 type commentProps = {
-  comment: {
-    user: {
-      username: string;
-    };
-    desc: string;
-    createdAt: string;
+  user: {
+    username: string;
+    imageUrl: string;
   };
+  desc: string;
+  createdAt: string;
 };
 
-const SingleComment = ({ comment }: commentProps) => {
-  console.log(comment);
+const SingleComment = ({ comment }: { comment: commentProps }) => {
   return (
     <main className="flex flex-col px-4 py-2 w-full dark:bg-zinc-900 border-2 rounded-xl gap-2">
       <span>{comment.user.username}</span>

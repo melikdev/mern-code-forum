@@ -2,6 +2,7 @@ import Comments from '@/components/Comments';
 import { Badge } from '@/components/ui/badge';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { Loader2 } from 'lucide-react';
 import { useParams } from 'react-router';
 import { format } from 'timeago.js';
 
@@ -71,7 +72,11 @@ const Question = () => {
       </div>
       <div className="flex flex-col gap-5 max-w-xl">
         <h1 className="text-3xl">Comments</h1>
-        <Comments postId={q._id} />
+        {isPending ? (
+          <Loader2 className="animate-spin" />
+        ) : (
+          <Comments postId={q._id} />
+        )}
       </div>
     </main>
   );
